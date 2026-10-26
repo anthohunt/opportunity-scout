@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block main %}
+<form method="post" action="/profil" class="stack">
+  <h2>Seuils d'entrée</h2>
+  <p class="meta">Une piste sous ces montants n'entre pas. Sans montant publié, elle n'entre que si le montant est très probablement au-dessus, avec la mention « montant non publié ».</p>
+  <div class="grid">
+    <label>Contrats (missions, expertise) <small>€ par heure ; TJM au moins 8 fois ce taux</small><input name="mission_eur_h" inputmode="decimal" value="{{ s.mission_eur_h }}"></label>
+    <label>Concours et red-teaming <small>€ au moins</small><input name="concours_eur" inputmode="decimal" value="{{ s.concours_eur }}"></label>
+    <label>Marchés publics, appels d'offres <small>budget minimum en €, cohérent avec le travail</small><input name="marche_eur" inputmode="decimal" value="{{ s.marche_eur }}"></label>
+    <label>Emplois <small>€ net par mois</small><input name="emploi_net_mois" inputmode="decimal" value="{{ s.emploi_net_mois }}"></label>
+    <label>Emplois, équivalent annuel <small>€ brut par an</small><input name="emploi_brut_an" inputmode="decimal" value="{{ s.emploi_brut_an }}"></label>
+    <label>Offre sans date limite publiée <small>gardée si publiée depuis moins de N jours ; 0 = écartée. Une date limite passée écarte toujours.</small><input name="sans_date_jours" inputmode="numeric" value="{{ s.sans_date_jours }}"></label>
+  </div>
+  <label>Villes acceptées pour un emploi sur place <small>séparées par des virgules ; sinon télétravail complet, n'importe quel pays</small><input name="lieux_emploi" value="{{ s.lieux_emploi|join(', ') }}"></label>
+
+  <h2>Répartition de l'effort de recherche</h2>
+  <p class="meta">Part de l'effort de chaque passage (requêtes et sources), en %. Le total doit faire 100. Exemple : contrats 60 (missions, marchés publics), emplois 20, concours 20. Les tâches payées à l'unité ne comptent pas comme contrats. Un type à 0 piste déclenche une recherche ciblée avant la fin du passage, jamais une piste sous les seuils.</p>
+  <div class="grid three">
+    {% for k, l in categories %}
+    <label class="c-{{ k }}">{{ l }}<input name="rep_{{ k }}" inputmode="numeric" value="{{ s.repartition[k] }}"></label>
+    {% endfor %}
+  </div>
+
+  <h2>Ce que l'agent sait de toi</h2>
+  <p class="meta">Lu au début de chaque passage, jamais mis dans une recherche web.{% if modifie %} Modifié le {{ modifie }}.{% endif %}</p>
+  <textarea name="contexte" rows="22" spellcheck="true">{{ contexte }}</textarea>
+  <button class="primary">Enregistrer</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+# Copiez ce fichier en docker-compose.yml. Dossier de données : ./data (chown 1000:1000 data).
+services:
+  scout:
+    build: .
+    restart: unless-stopped
+    environment:
+      # 0 = cookie de session sans « Secure » (essai en http sur localhost) ; mettez 1 derrière HTTPS
+      SECURE_COOKIE: "${SECURE_COOKIE:-0}"
+    volumes:
+      - ./data:/data
+    ports:
+      - "127.0.0.1:8000:8000"
+    # Derrière un proxy HTTPS (Traefik, Caddy, nginx) : retirez « ports » et branchez le service sur le réseau du proxy.

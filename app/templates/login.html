@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="login">
+  <div class="kicker">Agent de recherche</div>
+  <h1>Opportunités</h1>
+  {% if error %}<div class="flash ko">{{ error }}</div>{% endif %}
+  <form method="post" action="/login" class="stack">
+    <input type="text" name="username" value="operateur" autocomplete="username" hidden>
+    <label>Mot de passe<input type="password" name="password" required autocomplete="current-password" autofocus></label>
+    <button class="primary">Entrer</button>
+  </form>
+</div>
+{% endblock %}
