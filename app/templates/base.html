@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Opportunités</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+{% if logged %}
+<header class="top">
+  <div class="brand">Opportunités</div>
+  <form method="post" action="/logout"><button class="link">Se déconnecter</button></form>
+</header>
+<nav class="tabs">
+  <a href="/pistes" class="{{ 'on' if tab == 'pistes' }}">Pistes</a>
+  <a href="/sources" class="{{ 'on' if tab == 'sources' }}">Sources</a>
+  <a href="/profil" class="{{ 'on' if tab == 'profil' }}">Profil</a>
+</nav>
+{% endif %}
+<main>
+{% if msg %}<div class="flash ok">{{ msg }}</div>{% endif %}
+{% if err %}<div class="flash ko">{{ err }}</div>{% endif %}
+{% block main %}{% endblock %}
+</main>
+</body>
+</html>

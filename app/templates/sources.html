@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block main %}
+<details class="add" {{ 'open' if not rows }}>
+  <summary>Ajouter une source</summary>
+  <form method="post" action="/sources" class="stack">
+    <label>Lien<input type="url" name="url" required placeholder="https://…"></label>
+    <label>Nom <small>facultatif</small><input name="name" maxlength="120"></label>
+    <label>Quoi y chercher <small>facultatif</small><input name="note" maxlength="300" placeholder="ex. appels à experts XR, missions agents LLM"></label>
+    <button class="primary">Ajouter</button>
+  </form>
+</details>
+
+{% if rows %}
+<h2>Sources ajoutées</h2>
+<ul class="list">
+{% for s in rows %}
+  <li>
+    <a class="main" href="{{ s.url }}" rel="noopener noreferrer" target="_blank"><b>{{ s.name }}</b></a>
+    {% if s.note %}<div>{{ s.note }}</div>{% endif %}
+    <div class="meta">ajoutée le {{ s.added_at[:10] }}</div>
+    <form method="post" action="/sources/{{ s.id }}/delete" data-confirm="Retirer cette source ?"><button class="link danger">Retirer</button></form>
+  </li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<h2>Sources de base</h2>
+<p class="meta">Fouillées à chaque passage quotidien, en plus de la recherche web.</p>
+{% for k, l in categories %}
+<h3 class="c-{{ k }}">{{ l }}</h3>
+<ul class="list">
+{% for _, name, url, what in core[k] %}
+  <li>
+    <a class="main" href="{{ url }}" rel="noopener noreferrer" target="_blank"><b>{{ name }}</b></a>
+    <div class="meta">{{ what }}</div>
+  </li>
+{% endfor %}
+</ul>
+{% endfor %}
+{% endblock %}

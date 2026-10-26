@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block main %}
+{% set q_etat = '&etat=' ~ etat if etat != 'actives' else '' %}
+{% set q_pass = '&passees=1' if passees else '' %}
+<div class="lead">
+  <b>{{ total }} piste{{ 's' if total != 1 }}{{ ' hors écartées' if etat == 'actives' }}</b>
+  {% if dernier %}<span class="meta"> · dernier passage de l'agent : {{ dernier[:10] }}</span>{% endif %}
+</div>
+
+<div class="chips" role="group" aria-label="Type">
+  <a href="/pistes?{{ (q_etat ~ q_pass)[1:] }}" class="{{ 'on' if not cat }}">Toutes <span>{{ counts.values()|sum }}</span></a>
+  {% for k, l in categories %}
+  <a href="/pistes?cat={{ k }}{{ q_etat }}{{ q_pass }}" class="c-{{ k }} {{ 'on' if cat == k }}">{{ l }} <span>{{ counts[k] }}</span></a>
+  {% endfor %}
+</div>
+<div class="seg" role="group" aria-label="État">
+  {% set q_cat = 'cat=' ~ cat ~ '&' if cat else '' %}
+  <a href="/pistes?{{ q_cat }}{{ q_pass[1:] }}" class="{{ 'on' if etat == 'actives' }}">À traiter</a>
+  {% for k, l in etats.items() %}
+  <a href="/pistes?{{ q_cat }}etat={{ k }}{{ q_pass }}" class="{{ 'on' if etat == k }}">{{ l }} <span>{{ etat_counts[k] }}</span></a>
+  {% endfor %}
+</div>
+
+{% if not liste %}
+  <p class="empty">{% if not n_reports %}L'agent n'a pas encore fait de passage.{% else %}Aucune piste ici.{% endif %}</p>
+{% endif %}
+
+<ul class="cards">
+{% for v in liste %}
+  <li class="card c-{{ v.cat }} etat-{{ v.etat }}" data-id="{{ v.id }}">
+    <div class="card-head">
+      <span class="pill">{{ v.type_label }}</span>{% if v.hors_quota %}<span class="hq">hors quota</span>{% endif %}
+      <span class="org">{{ v.p.organisme }}{% if v.lieu %} · {{ v.lieu }}{% endif %}</span>
+      {% if v.nouveau %}<span class="new">nouveau</span>{% endif %}
+    </div>
+    <h2><a href="{{ v.p.lien }}" target="_blank" rel="noopener noreferrer">{{ v.p.titre }}</a></h2>
+    <dl class="facts">
+      <div><dt>Montant</dt><dd>{{ v.p.montant }}{% if v.p.montant_publie == false %}<small>montant non publié</small>{% endif %}</dd></div>
+      <div><dt>Date limite</dt><dd class="{{ 'urgent' if v.echeance.urgent }}">{{ v.echeance.date }}{% if v.echeance.reste %}<small>{{ v.echeance.reste }}</small>{% endif %}</dd></div>
+      <div><dt>Effort</dt><dd>{{ v.p.effort }}</dd></div>
+    </dl>
+    <p class="why"><b>Pourquoi pour toi.</b> {{ v.p.pourquoi }}</p>
+    {% if v.p.vigilance %}<p class="vig"><b>À vérifier.</b> {{ v.p.vigilance }}</p>{% endif %}
+    <div class="card-foot">
+      <a class="open" href="{{ v.p.lien }}" target="_blank" rel="noopener noreferrer">Ouvrir l'annonce <span class="dom">{{ v.domaine }}</span></a>
+      <form method="post" action="/pistes/{{ v.id }}/etat" class="etat" role="group" aria-label="État de la piste">
+        {% for k, l in etats.items() %}
+        <button name="etat" value="{{ k }}" class="{{ 'on' if v.etat == k }}" aria-pressed="{{ 'true' if v.etat == k else 'false' }}">{{ l }}</button>
+        {% endfor %}
+      </form>
+    </div>
+  </li>
+{% endfor %}
+</ul>
+
+{% if n_passees %}
+<p class="meta center">{% if passees %}<a href="/pistes?{{ q_cat }}{{ q_etat[1:] }}">Masquer les pistes dont la date limite est passée</a>{% else %}<a href="/pistes?{{ q_cat }}passees=1{{ q_etat }}">Voir aussi {{ n_passees }} piste{{ 's' if n_passees > 1 }} dont la date limite est passée</a>{% endif %}</p>
+{% endif %}
+{% endblock %}
