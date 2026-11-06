@@ -26,7 +26,7 @@ rendered mail first).
 ## Requirements
 
 - Docker with the compose plugin (for the app), or Python ≥ 3.10 and `pip install -r requirements.txt`.
-- For the agent: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and logged in on the
+- For the agent: [Claude Code](https://code.claude.com/docs/en/overview) installed and logged in on the
   machine that runs `agent/lancer.sh` (a paid Anthropic account; a separate product under Anthropic's terms).
   Without it, everything but the daily search runs: the app, the judge, the digest rendering.
 - Python third-party packages (all installed from PyPI by `requirements.txt`): FastAPI, Uvicorn, Jinja2,
@@ -69,3 +69,7 @@ terms of use and robots rules, keep the volume low, and do not redistribute what
 - Code: Apache License 2.0 (`LICENSE`, `NOTICE`).
 - Documentation and agent instruction files (`README.md`, `agent/*.md`): CC BY 4.0 (`LICENSE-docs`).
 - The example profile in `agent/contexte.exemple.md` is fictional.
+
+---
+
+**Anthony Hunt** · [Project page on ingevision.cloud](https://ingevision.cloud/?lang=en&p=opportunity-scout) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub profile](https://github.com/anthohunt)
