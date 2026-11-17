@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 610" width="720" height="610" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" role="img" aria-label="opportunity-scout architecture">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 625" width="720" height="625" font-family="IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif" role="img" aria-label="opportunity-scout architecture">
 <title>opportunity-scout architecture</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f4fd1"/></marker></defs>
-<rect width="720" height="610" rx="16" fill="#ffffff"/>
+<rect width="720" height="625" rx="16" fill="#ffffff"/>
 <rect x="20" y="20" width="460" height="110" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
 <text x="34" y="38" fill="#5d6b82" font-size="11.5" font-weight="600" letter-spacing=".72">OPERATOR</text>
 <rect x="490" y="20" width="210" height="110" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
@@ -11,37 +11,41 @@
 <rect x="20" y="470" width="460" height="120" rx="14" fill="#e6ebf2" stroke="#c9d1dd" stroke-dasharray="4 4"/>
 <text x="34" y="488" fill="#5d6b82" font-size="11.5" font-weight="600" letter-spacing=".72">DATA</text>
 <path d="M320 252L320 352" fill="none" stroke="#1f4fd1" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<text x="328" y="306" fill="#1f4fd1" font-size="12">runs</text>
 <g id="b-vous"><rect x="30" y="52" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="42" y="77" fill="#14213d" font-size="15.5" font-weight="600">You</text><text x="42" y="97" fill="#5d6b82" font-size="13.5">browser · 3 tabs</text></g>
-<g id="b-mail"><rect x="260" y="52" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="272" y="77" fill="#14213d" font-size="15.5" font-weight="600">Monday mail</text><text x="272" y="97" fill="#5d6b82" font-size="13.5">the week's digest</text></g>
+<g id="b-mail"><rect x="260" y="52" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="272" y="77" fill="#14213d" font-size="15.5" font-weight="600">Monday mail</text><text x="272" y="97" fill="#5d6b82" font-size="13.5">digest by the agent</text></g>
 <g id="b-web"><rect x="490" y="52" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="502" y="77" fill="#14213d" font-size="15.5" font-weight="600">Public sites</text><text x="502" y="97" fill="#5d6b82" font-size="13.5">tenders · missions · jobs</text></g>
 <g id="b-app"><rect x="30" y="192" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="42" y="217" fill="#14213d" font-size="15.5" font-weight="600">Web app</text><text x="42" y="237" fill="#5d6b82" font-size="13.5">FastAPI · SQLite</text></g>
 <g id="b-lancer"><rect x="260" y="192" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="272" y="217" fill="#14213d" font-size="15.5" font-weight="600">lancer.sh</text><text x="272" y="237" fill="#5d6b82" font-size="13.5">cron · 7 am, Mon 8 am</text></g>
 <g id="b-agent"><rect x="490" y="192" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="502" y="217" fill="#14213d" font-size="15.5" font-weight="600">Agent</text><text x="502" y="237" fill="#5d6b82" font-size="13.5">Claude Code · claude -p</text></g>
 <g id="b-juge"><rect x="260" y="352" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="272" y="377" fill="#14213d" font-size="15.5" font-weight="600">Judge</text><text x="272" y="397" fill="#5d6b82" font-size="13.5">rules · reopens links</text></g>
-<g id="b-profil"><rect x="30" y="502" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="42" y="527" fill="#14213d" font-size="15.5" font-weight="600">Profile, triage</text><text x="42" y="547" fill="#5d6b82" font-size="13.5">read on the next pass</text></g>
+<g id="b-profil"><rect x="30" y="502" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="42" y="527" fill="#14213d" font-size="15.5" font-weight="600">Profile, triage</text><text x="42" y="547" fill="#5d6b82" font-size="13.5">thresholds · sources · states</text></g>
 <g id="b-pistes"><rect x="260" y="502" width="200" height="60" rx="10" fill="#fff" stroke="#1f4fd1" stroke-width="2.2"/><text x="272" y="527" fill="#14213d" font-size="15.5" font-weight="600">Today's leads</text><text x="272" y="547" fill="#5d6b82" font-size="13.5">rapports/&lt;date&gt;.json</text></g>
 <g id="a1" class="arrow"><path class="trace" d="M420 252L420 302L540 302L540 252" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="449.6" y="292" width="60.8" height="19" rx="4" fill="#fff"/><text x="480" y="306" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">starts</text>
 <circle cx="438.6" cy="302" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="438.6" y="306" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">1</text></g>
-<g id="a2" class="arrow"><path class="trace" d="M590 192L590 110" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<g id="a2" class="arrow"><path class="trace" d="M130 562L130 606L680 606L680 252" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="533.5" y="596" width="53.0" height="19" rx="4" fill="#fff"/><text x="560" y="610" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">reads</text>
+<circle cx="522.5" cy="606" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="522.5" y="610" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">2</text></g>
+<g id="a3" class="arrow"><path class="trace" d="M590 192L590 110" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="551.8" y="141" width="76.4" height="19" rx="4" fill="#fff"/><text x="590" y="155" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">searches</text>
-<circle cx="540.8" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="540.8" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">2</text></g>
-<g id="a3" class="arrow"><path class="trace" d="M650 252L650 532L460 532" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
-<rect x="619.6" y="390" width="60.8" height="19" rx="4" fill="#fff"/><text x="650" y="404" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">writes</text>
-<circle cx="608.6" cy="400" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="608.6" y="404" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">3</text></g>
-<g id="a4" class="arrow"><path class="trace" d="M360 412L360 502" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<circle cx="540.8" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="540.8" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">3</text></g>
+<g id="a4" class="arrow"><path class="trace" d="M625 252L625 532L460 532" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="594.6" y="390" width="60.8" height="19" rx="4" fill="#fff"/><text x="625" y="404" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">writes</text>
+<circle cx="583.6" cy="400" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="583.6" y="404" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">4</text></g>
+<g id="a5" class="arrow"><path class="trace" d="M360 412L360 502" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="329.6" y="447" width="60.8" height="19" rx="4" fill="#fff"/><text x="360" y="461" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">checks</text>
-<circle cx="318.6" cy="457" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="318.6" y="461" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">4</text></g>
-<g id="a5" class="arrow"><path class="trace" d="M260 522L245 522L245 300L215 300L215 252" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<circle cx="318.6" cy="457" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="318.6" y="461" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">5</text></g>
+<g id="a6" class="arrow"><path class="trace" d="M260 522L245 522L245 300L215 300L215 252" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="210.7" y="442" width="68.6" height="19" rx="4" fill="#fff"/><text x="245" y="456" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">imports</text>
-<circle cx="199.7" cy="452" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="199.7" y="456" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">5</text></g>
-<g id="a6" class="arrow"><path class="trace" d="M170 110L170 192" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<circle cx="199.7" cy="452" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="199.7" y="456" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">6</text></g>
+<g id="a7" class="arrow"><path class="trace" d="M170 110L170 192" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="139.6" y="141" width="60.8" height="19" rx="4" fill="#fff"/><text x="170" y="155" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">triage</text>
-<circle cx="128.6" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="128.6" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">6</text></g>
-<g id="a7" class="arrow"><path class="trace" d="M170 252L170 502" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<circle cx="128.6" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="128.6" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">7</text></g>
+<g id="a8" class="arrow"><path class="trace" d="M170 252L170 502" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="139.6" y="370" width="60.8" height="19" rx="4" fill="#fff"/><text x="170" y="384" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">writes</text>
-<circle cx="128.6" cy="380" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="128.6" y="384" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">7</text></g>
-<g id="a8" class="arrow"><path class="trace" d="M360 192L360 110" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
+<circle cx="128.6" cy="380" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="128.6" y="384" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">8</text></g>
+<g id="a9" class="arrow"><path class="trace" d="M360 192L360 110" fill="none" stroke="#1f4fd1" stroke-width="2.4" marker-end="url(#a)"/>
 <rect x="325.7" y="141" width="68.6" height="19" rx="4" fill="#fff"/><text x="360" y="155" text-anchor="middle" fill="#1f4fd1" font-size="13.5" font-weight="600">Mondays</text>
-<circle cx="314.7" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="314.7" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">8</text></g>
+<circle cx="314.7" cy="151" r="9" fill="#fff" stroke="#1f4fd1" stroke-width="1.5"/><text x="314.7" y="155" text-anchor="middle" fill="#1f4fd1" font-size="11" font-weight="700" font-family="IBM Plex Mono, Consolas, monospace">9</text></g>
 </svg>
