@@ -20,6 +20,12 @@
 
 ![Architecture d'opportunity-scout : le cron lance l'agent, qui cherche sur les sites publics et écrit les pistes du jour ; un script juge les contrôle ; l'app web les importe ; vous les triez et l'app écrit votre profil et votre tri, lus au passage suivant ; le lundi, le lanceur envoie le récapitulatif](docs/architecture.svg)
 
+<details><summary>Diagramme en français</summary>
+
+![Architecture d'opportunity-scout : le cron lance l'agent, qui cherche sur les sites publics et écrit les pistes du jour ; un script juge les contrôle ; l'app web les importe ; vous les triez et l'app écrit votre profil et votre tri, lus au passage suivant ; le lundi, le lanceur envoie le récapitulatif](docs/architecture.fr.svg)
+
+</details>
+
 ## Démarrage
 
 ```bash

@@ -18,7 +18,13 @@
 
 ## Architecture
 
-![opportunity-scout architecture: cron starts the agent, which searches public sites and writes the day's leads; a judge script checks them; the web app imports them; you sort them and the app writes your profile and triage, read on the next pass; on Mondays the launcher sends the digest](docs/architecture.en.svg)
+![opportunity-scout architecture: cron starts the agent, which searches public sites and writes the day's leads; a judge script checks them; the web app imports them; you sort them and the app writes your profile and triage, read on the next pass; on Mondays the launcher sends the digest](docs/architecture.svg)
+
+<details><summary>French version</summary>
+
+![Architecture d'opportunity-scout : le cron lance l'agent, qui cherche sur les sites publics et écrit les pistes du jour ; un script juge les contrôle ; l'app web les importe ; vous les triez et l'app écrit votre profil et votre tri, lus au passage suivant ; le lundi, le lanceur envoie le récapitulatif](docs/architecture.fr.svg)
+
+</details>
 
 ## Quick start
 
