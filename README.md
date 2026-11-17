@@ -1,75 +1,53 @@
-# opportunity-scout — a daily agent that hunts paid opportunities, and the small web app that holds its leads
+**English** · [Français](README.fr.md)
 
-Every morning an AI agent (Claude Code, run headless) looks for **contracts** (freelance missions, public
-tenders a solo contractor can serve), **competitions** (AI challenges, red-teaming, bug bounties) and **jobs**,
-according to a profile and thresholds you set. A deterministic script then **re-checks every lead** (required
-fields, deadline still ahead, amount above your threshold, location rule, and a real HTTP test of the link) and
-drops what fails. What survives lands in a password-protected web app; on Mondays a short newsletter sums up the week.
+# opportunity-scout
 
-> The agent instructions, the app and the code comments are in French (the default sources are French and
-> European procurement and job sites). Adapt `agent/sources-base.md` and `agent/contexte.exemple.md` to your market.
+**Every morning a Claude Code agent searches the web for paid work; a plain script re-checks every lead before it reaches your list.**
 
-## What is in the box
+[![The judge keeps 4 leads out of 8, the leads are sorted in the app, then the Monday digest (demo data, click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)
 
-| Part | What it does |
-| --- | --- |
-| `app/` | FastAPI app: one master password (argon2), tabs **Pistes** (leads, with a state *to see / interested / dismissed*), **Sources** (sources you add), **Profil** (thresholds, effort split, the text describing you). It writes the files the agent reads. |
-| `agent/consigne.md` | The daily protocol given to the agent (load context, search with an effort budget per type, filter, write `rapports/<date>.json`, trace). |
-| `agent/verifier-pistes.py` | The judge: it never trusts the agent. Required fields, future deadline, thresholds, location, link really opens and is not a closed offer. |
-| `agent/consigne-hebdo.md`, `assembler-semaine.py`, `rendre-mail.py`, `envoyer-mail.py` | Monday digest: candidates assembled and re-checked by script, ordered by the agent, rendered as an email-safe HTML table, sent by plain SMTP. |
-| `agent/lancer.sh` | The cron entry point, configured only by environment variables. |
+*The app from this repository on demo data: the judge keeps 4 leads out of 8, two are sorted, then the Monday digest. Interface in French. [Full video (1:18)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)*
 
-The agent never searches the web with your name, employer, city or salary: it searches *topics*. It creates no
-account and applies to nothing. The mail is sent only once you create the file `.envoi-actif` (so you can read the
-rendered mail first).
+## Using it
 
-## Requirements
+- **Daily pass.** At 7 a.m. `lancer.sh` (cron) starts `claude -p`. It searches contracts (freelance missions, public tenders), competitions and red-teaming, and jobs, with the effort split you set (60 / 20 / 20 by default).
+- **Every lead re-checked.** `verifier-pistes.py` drops a lead with a missing field, a past deadline, an amount under your threshold, a job neither in your cities nor fully remote, or a link that fails or says the offer is closed.
+- **Sort in the app.** Leads by category, each marked *to see*, *interested* or *dismissed* in one click. The agent reads your triage the next morning and stops proposing what you dismissed.
+- **Your settings.** Sources tab for sites to add; Profile tab for thresholds, cities, effort split and the text that describes you. That text never goes into a web search; the agent creates no account and applies to nothing.
+- **Monday digest.** The week's leads, re-checked that morning, as an email-safe HTML newsletter. Nothing is sent until you create `.envoi-actif`.
 
-- Docker with the compose plugin (for the app), or Python ≥ 3.10 and `pip install -r requirements.txt`.
-- For the agent: [Claude Code](https://code.claude.com/docs/en/overview) installed and logged in on the
-  machine that runs `agent/lancer.sh` (a paid Anthropic account; a separate product under Anthropic's terms).
-  Without it, everything but the daily search runs: the app, the judge, the digest rendering.
-- Python third-party packages (all installed from PyPI by `requirements.txt`): FastAPI, Uvicorn, Jinja2,
-  python-multipart, argon2-cffi, httpx (MIT / BSD / Apache-2.0), pytest (MIT).
+## Architecture
 
-## Install and try it
+![opportunity-scout architecture: cron starts the agent, which searches public sites and writes the day's leads; a judge script checks them; the web app imports them; you sort them and the app writes your profile and triage, read on the next pass; on Mondays the launcher sends the digest](docs/architecture.en.svg)
+
+## Quick start
 
 ```bash
-git clone <this repository> opportunity-scout && cd opportunity-scout
+git clone https://github.com/anthohunt/opportunity-scout && cd opportunity-scout
 cp docker-compose.example.yml docker-compose.yml
-mkdir data && sudo chown 1000:1000 data           # the container runs as uid 1000
-cp agent/contexte.exemple.md data/contexte.md     # then edit: describe yourself (or use the Profil tab)
+mkdir data && sudo chown 1000:1000 data            # the container runs as uid 1000
+cp agent/contexte.exemple.md data/contexte.md      # then describe yourself, or use the Profile tab
 docker compose up -d --build
-docker compose exec scout python manage.py masterpw   # prints the master password ONCE
-# open http://localhost:8000, log in with that password
-docker compose run --rm scout python -m pytest -q tests   # the test suite
+docker compose exec scout python manage.py masterpw   # prints the master password once
 ```
 
-### Run the agent every day
+Open http://localhost:8000. For the agent: `cp .env.example .env`, edit it, load it (`set -a; . ./.env; set +a`), then `FORCE=1 agent/lancer.sh` runs one pass now and `FORCE=1 HEBDO=1 agent/lancer.sh` renders the Monday digest without sending it.
 
-```bash
-cp .env.example .env     # edit SCOUT_DIR (the folder mounted on /data), the schedule, the mail settings
-set -a; . ./.env; set +a
-FORCE=1 agent/lancer.sh                  # one daily pass now
-FORCE=1 HEBDO=1 agent/lancer.sh          # the Monday digest now (rendered to hebdo/<date>.html, not sent)
-touch "$SCOUT_DIR/.envoi-actif"          # only when you want the mail to really leave
-```
+<details><summary>Requirements, tests, sources</summary>
 
-Cron: `5 5,6 * * * /path/agent/lancer.sh` and `0 6,7 * * 1 HEBDO=1 /path/agent/lancer.sh` (the script only works at
-the configured local hour, so summer/winter time changes are harmless).
+- **Requirements.** Docker with the compose plugin, or Python 3.10 or later (`pip install -r requirements.txt`). For the daily search, [Claude Code](https://code.claude.com/docs/en/overview) logged in on the machine that runs `lancer.sh`; without it, the app, the judge and the digest still run.
+- **Tests.** `docker compose run --rm scout python -m pytest -q tests`: 13 tests on a real SQLite base and a real local HTTP server.
+- **Sources.** Public pages and APIs (BOAMP, TED, Devpost…). Respect each site's terms and keep the volume low; sites that block robots (Malt, Upwork, Indeed) are reached through web search.
+- **Language.** The agent instructions and the app are in French; adapt `agent/sources-base.md` and the example profile to your market.
 
-## Respect the sources
+</details>
 
-The agent reads public pages and APIs (procurement notices, job boards, hackathon listings). Respect each site's
-terms of use and robots rules, keep the volume low, and do not redistribute what you collect. Several sites
-(Malt, Upwork, Indeed…) block robots on purpose: the protocol goes through web search for them.
+## Status
 
-## Licenses
-
-- Code: Apache License 2.0 (`LICENSE`, `NOTICE`).
-- Documentation and agent instruction files (`README.md`, `agent/*.md`): CC BY 4.0 (`LICENSE-docs`).
-- The example profile in `agent/contexte.exemple.md` is fictional.
+- **In use since October 2026.** The author's own copy runs every morning. It has grown past this repository (subsidies, a daily mail, an effort counter, a distance rule) and is not published.
+- **This repository** is the first public version (26 October 2026), with dependencies updated on 10 November.
+- **Licences.** Code under Apache 2.0 (`LICENSE`, `NOTICE`); documentation and agent instructions under CC BY 4.0 (`LICENSE-docs`). The example profile is fictional.
 
 ---
 
-**Anthony Hunt** · [Project page on ingevision.cloud](https://ingevision.cloud/?lang=en&p=opportunity-scout) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub profile](https://github.com/anthohunt)
+**Anthony Hunt** · [ingevision.cloud](https://ingevision.cloud/?lang=en&p=opportunity-scout) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub](https://github.com/anthohunt)
