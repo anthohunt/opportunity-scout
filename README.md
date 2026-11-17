@@ -4,7 +4,13 @@
 
 **Every morning a Claude Code agent searches the web for paid work; a plain script re-checks every lead before it reaches your list.**
 
-[![The judge keeps 4 leads out of 8, the leads are sorted in the app, then the Monday digest (demo data, click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)
+[![The judge keeps 4 leads out of 8, the leads are sorted in the app, then the Monday digest (demo data, click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)
+
+<details><summary>French version</summary>
+
+[![Le juge garde 4 pistes sur 8, les pistes sont triées dans l'app, puis le récapitulatif du lundi (données de démonstration, cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/1NqEsdWTNVZYQ2H2bNQrOvaCsw4Nq43Pe/view)
+
+</details>
 
 *The app from this repository on demo data: the judge checks today's pass (4 leads kept out of 8), the week's leads are sorted, then last Monday's digest. [Full video (1:19)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)*
 
