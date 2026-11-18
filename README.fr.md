@@ -4,15 +4,15 @@
 
 **Chaque matin, un agent Claude Code cherche du travail payé sur le web ; un simple script recontrôle chaque piste avant qu'elle n'arrive dans votre liste.**
 
-[![Le juge garde 4 pistes sur 8, les pistes sont triées dans l'app, puis le récapitulatif du lundi (données de démonstration, cliquer pour la vidéo complète) (version anglaise)](docs/demo.webp)](https://drive.google.com/file/d/1JvPLCW5v554LGiX6XDvAgMzJfXQjS-YM/view)
+![Le juge garde 4 pistes sur 8, les pistes sont triées dans l'app, puis le récapitulatif du lundi (données de démonstration) (version anglaise)](docs/demo.webp)
 
 <details><summary>Version française</summary>
 
-[![Le juge garde 4 pistes sur 8, les pistes sont triées dans l'app, puis le récapitulatif du lundi (données de démonstration, cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/1NqEsdWTNVZYQ2H2bNQrOvaCsw4Nq43Pe/view)
+![Le juge garde 4 pistes sur 8, les pistes sont triées dans l'app, puis le récapitulatif du lundi (données de démonstration)](docs/demo.fr.webp)
 
 </details>
 
-*L'app de ce dépôt sur des données de démonstration : le juge contrôle le passage du jour (4 pistes gardées sur 8), les pistes de la semaine sont triées, puis le récapitulatif du lundi précédent. [Vidéo complète (1:19)](https://drive.google.com/file/d/1NqEsdWTNVZYQ2H2bNQrOvaCsw4Nq43Pe/view)*
+*L'app de ce dépôt sur des données de démonstration : le juge contrôle le passage du jour (4 pistes gardées sur 8), les pistes de la semaine sont triées, puis le récapitulatif du lundi précédent.*
 
 ## Ce qu'on fait avec
 
